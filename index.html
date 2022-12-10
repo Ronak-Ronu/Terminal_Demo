@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ronak_Terminal</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"
+    />
+    <style>
+      .content {
+        height: 570px;
+        width: 900px;
+        margin: auto;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 5px 10px 20px rgb(96, 94, 94);
+      }
+      :root {
+        --size:2.1;
+        --color:rgb(0, 255, 0);
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="content" ></div>
+    <template id="easter">
+                                           __   
+                                           \o\  
+                                           |_| 
+          ____                             |_|
+     ____/    \___                         |_|
+    (_____RONAK___|                    _   |_|
+______\_/____\_/______________________/ \__|_|_   
+       </template>
+    <script>
+        // $('.content').terminal('service.php', {login: true});
+             $('.content').terminal({
+          hello: function()
+          {
+              this.echo('hi,iam ronak (admin).',{ typing: true,delay: 100});                
+          },
+          whoami:function()
+              {
+          this.echo('/root/home')
+             },
+             "img(cat)":function(width,height)
+             {
+                var image=$('<img src="https://placekitten.com/'+width+'/'+height+'">')
+                this.echo(image)
+             },
+             easter:function()
+             {
+                var hello=easter.innerHTML
+                this.echo(hello)
+             },
+             add:function(a,b){
+                this.echo(a+b)
+             },
+             subt:function(a,b){
+                this.echo(a-b)
+             },
+             product:function(a,b){
+                this.echo(a*b)
+             },
+             time:function()
+             {
+                this.echo(Date())
+
+               },
+             "img(dog)":function(){
+               var ima=fetch('https://random.dog/woof.json').then(res=>res.json())
+               var img=ima.then(data=>data.url)
+               this.echo(img)
+             }
+          },
+          {
+          greetings: '\t\t\t\t\t| HELLO WORLD |\n-----------------------------------------------------try:\n-hello\t\t-whoami\t\t-img(cat) width height\n-clear\t\t-easter\t\t-time\n-add 10 20 | subt 10 20 | product 10 20\n',prompt:'$ '
+          }
+          );
+    </script>
+  </body>
+</html>
