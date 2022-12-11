@@ -55,6 +55,20 @@
     (_____RONAK___|                    _   |_|
 ______\_/____\_/______________________/ \__|_|_   
        </template>
+    <template id="who">
+                                    _______
+      _____    _                    |      |
+        |     / \   |\_/|           | img: |
+        |    /___\  |   |           | NULL |
+      __|__ /     \ |   | "RONAK"   |______|
+      
+      
+  ' student ' at ____ institute.
+  being ready...
+
+
+
+    </template>
     <script>
         // $('.content').terminal('service.php', {login: true});
              $('.content').terminal({
@@ -94,10 +108,23 @@ ______\_/____\_/______________________/ \__|_|_
                var ima=fetch('https://random.dog/woof.json').then(res=>res.json())
                var img=ima.then(data=>data.url)
                this.echo(img)
+             },
+             whoareyou:function(){
+              var wau=who.innerHTML
+              this.echo(wau)
+              this.echo(". . . .",{typing:true,delay:210})
+             },
+             follow:function(){
+              var h=document.createElement('h4');
+                var foll=document.createElement("a");
+                foll.href="https://www.instagram.com/ronak._.2002/";
+                var email=document.createElement("a");
+                email.href="mailto:ronakronu02@gmail.com"
+                this.echo(foll.href+"\t<-- FOLLOW"+"\n"+email.href+"\t <-- EMAIL ME")
              }
           },
           {
-          greetings: '\t\t\t\t\t| HELLO WORLD |\n-----------------------------------------------------try:\n-hello\t\t-whoami\t\t-img(cat) width height\n-clear\t\t-easter\t\t-time\n-add 10 20 | subt 10 20 | product 10 20\n',prompt:'$ '
+          greetings: '\t\t\t\t\t| HELLO WORLD |\n---------------------------------------------------------try:\n-hello\t\t-whoami\t\t-img(cat) width height\n-clear\t\t-easter\t\t-time\n-add 10 20 | subt 10 20 | product 10 20\n-whoareyou\t-follow\n---------------------------------------------------------',prompt:'$ '
           }
           );
     </script>
