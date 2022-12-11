@@ -74,7 +74,13 @@ ______\_/____\_/______________________/ \__|_|_
              $('.content').terminal({
           hello: function()
           {
-              this.echo('hi,iam ronak (admin).',{ typing: true,delay: 100});                
+              this.echo('hi,iam ronak (admin).',{ typing: true,delay: 100}).then(read=>
+              this.read("you ? ").then(name=>
+              this.echo("hello,"+name,{typing:true,delay:60}))).then(reply=>
+              
+              this.echo("im 20 and teen",{ typing: true,delay: 100}).then(read1=>
+              this.read("what about you ?").then(reply1=>
+              this.echo("wow its amazing nice meeting you :)"+name))))
           },
           whoami:function()
               {
@@ -121,6 +127,13 @@ ______\_/____\_/______________________/ \__|_|_
                 var email=document.createElement("a");
                 email.href="mailto:ronakronu02@gmail.com"
                 this.echo(foll.href+"\t<-- FOLLOW"+"\n"+email.href+"\t <-- EMAIL ME")
+             },
+             ls:function(){
+              this.echo("under construction. cant use:[ls,cd,cat.mkdir,rm,chmod,\netc]")
+             },
+             addme:function(){
+              this.read("username:").then(name=>
+              this.echo("hello,"+name,{typing:true,delay:60}))
              }
           },
           {
