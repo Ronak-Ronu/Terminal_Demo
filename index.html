@@ -62,13 +62,10 @@ ______\_/____\_/______________________/ \__|_|_
         |    /___\  |   |           | NULL |
       __|__ /     \ |   | "RONAK"   |______|
       
-      
   ' student ' at ____ institute.
   being ready...
-
-
-
     </template>
+    
     <script>
         // $('.content').terminal('service.php', {login: true});
              $('.content').terminal({
@@ -80,7 +77,8 @@ ______\_/____\_/______________________/ \__|_|_
               
               this.echo("im 20 and teen",{ typing: true,delay: 100}).then(read1=>
               this.read("what about you ?").then(reply1=>
-              this.echo("wow its amazing nice meeting you :)"+name))))
+              this.echo("wow its amazing nice meeting you :)"))))
+             
           },
           whoami:function()
               {
@@ -111,9 +109,8 @@ ______\_/____\_/______________________/ \__|_|_
 
                },
              "img(dog)":function(){
-               var ima=fetch('https://random.dog/woof.json').then(res=>res.json())
-               var img=ima.then(data=>data.url)
-               this.echo(img)
+              var url=fetch('https://random.dog/woof')
+              var img=url.then(res=>res.text()).then(data=>this.echo($('<img style="width:70px height:70px" src="https://random.dog/'+data+'">')))
              },
              whoareyou:function(){
               var wau=who.innerHTML
@@ -131,14 +128,21 @@ ______\_/____\_/______________________/ \__|_|_
              ls:function(){
               this.echo("under construction. cant use:[ls,cd,cat.mkdir,rm,chmod,\netc]")
              },
-             addme:function(){
-              this.read("username:").then(name=>
-              this.echo("hello,"+name,{typing:true,delay:60}))
-             }
-          },
-          {
-          greetings: '\t\t\t\t\t| HELLO WORLD |\n---------------------------------------------------------try:\n-hello\t\t-whoami\t\t-img(cat) width height\n-clear\t\t-easter\t\t-time\n-add 10 20 | subt 10 20 | product 10 20\n-whoareyou\t-follow\n---------------------------------------------------------',prompt:'$ '
+             addmyprompt:function(symbol){
+              this.set_prompt(symbol,{typing:true,delay:100})
+             },
+             echo:function(text){
+            const cmd = $.terminal.parse_command(text);
+            this.echo('[[bi;#fff;]' + JSON.stringify(text) + ']')
+            
           }
+           
+          },
+          
+          {
+          greetings: '\t\t\t\t\t| HELLO WORLD |\n-----------------------------------------------------try:\n-hello\t\t-whoami\t\t-img(cat) width height\n-clear\t\t-easter\t\t-time\n-add 10 20 | subt 10 20 | product 10 20\n-whoareyou\t-follow\t\t-addmyprompt symbol\n-img(dog)\n-----------------------------------------------------',prompt:'$ '
+          },
+     
           );
     </script>
   </body>
