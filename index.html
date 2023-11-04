@@ -13,8 +13,8 @@
     />
     <style>
       .content {
-        height: 570px;
-        width: 900px;
+        height: 90vh;
+        width: 70%;
         margin: auto;
         margin-top: 20px;
         border-radius: 10px;
@@ -29,8 +29,8 @@
     background-color: lightblue;
   }
   .content {
-        height: 500px;
-        width: 500px;
+    height: 90vh;
+        width: 95vw;
         margin: auto;
         margin-top: 20px;
         border-radius: 10px;
@@ -48,12 +48,12 @@
     <div class="content" ></div>
     <template id="easter">
                                            __   
-                                           \o\  
+                                           \#\  
                                            |_| 
           ____                             |_|
      ____/    \___                         |_|
-    (_____RONAK___|                    _   |_|
-______\_/____\_/______________________/ \__|_|_   
+    (____RONAK ___|                    _   |_|
+______\`/____\`/______________________/ \__|_|_   
        </template>
     <template id="who">
                                     _______
@@ -74,11 +74,9 @@ ______\_/____\_/______________________/ \__|_|_
               this.echo('hi,iam ronak (admin).',{ typing: true,delay: 100}).then(read=>
               this.read("you ? ").then(name=>
               this.echo("hello,"+name,{typing:true,delay:60}))).then(reply=>
-              
               this.echo("im 20 and teen",{ typing: true,delay: 100}).then(read1=>
               this.read("what about you ?").then(reply1=>
-              this.echo("wow its amazing nice meeting you :)"))))
-             
+              this.echo("wow its amazing nice meeting you :)",{typing:true,delay:100}))))
           },
           whoami:function()
               {
@@ -112,11 +110,16 @@ ______\_/____\_/______________________/ \__|_|_
               var url=fetch('https://random.dog/woof')
               var img=url.then(res=>res.text()).then(data=>this.echo($('<img style="width:500px; height:600px;" src="https://random.dog/'+data+'">')))
              },
+
+          
+
              whoareyou:function(){
               var wau=who.innerHTML
               this.echo(wau)
               this.echo(". . . .",{typing:true,delay:210})
              },
+
+
              follow:function(){
               var h=document.createElement('h4');
                 var foll=document.createElement("a");
@@ -125,24 +128,40 @@ ______\_/____\_/______________________/ \__|_|_
                 email.href="mailto:ronakronu02@gmail.com"
                 this.echo(foll.href+"\t<-- FOLLOW"+"\n"+email.href+"\t <-- EMAIL ME")
              },
+
+
              ls:function(){
               this.echo("under construction. cant use:[ls,cd,cat.mkdir,rm,chmod,\netc]")
              },
+
+
              addmyprompt:function(symbol){
               this.set_prompt(symbol,{typing:true,delay:100})
              },
+
+
+             random:function(width,height){
+              var rnmd_image=$('<img style="width:500px; height:600px;" src="https://picsum.photos/'+width+'/'+height+'">')
+                this.echo(rnmd_image);
+             },
+
+             generate:function(query){
+              var rnmd_image=$('<img style="width:500px; height:600px;" src="https://image.pollinations.ai/prompt/'+query+'">')
+                this.echo(rnmd_image);
+             },
+
+
              echo:function(text){
             const cmd = $.terminal.parse_command(text);
             this.echo('[[bi;#fff;]' + JSON.stringify(text) + ']')
-            
-          }
-           
-          },
+              }
+            },
           
           {
-          greetings: '\t\t\t\t\t| HELLO WORLD |\n-----------------------------------------------------try:\n-hello\t\t-whoami\t\t-img(cat) width height\n-clear\t\t-easter\t\t-time\n-add 10 20 | subt 10 20 | product 10 20\n-whoareyou\t-follow\t\t-addmyprompt symbol\n-img(dog)\n-----------------------------------------------------',prompt:'$ '
+          greetings: '\t\t\t\t\t| HELLO WORLD |\n-----------------------------------------------------try:\n-hello\t\t-whoami\t\t-img(cat) width height\n-clear\t\t-easter\t\t-time\n-add 10 20 | subt 10 20 | product 10 20\n-whoareyou\t-follow\t\t-addmyprompt symbol\n-img(dog)\t-random <w> <h>\t-generate <query>\n-----------------------------------------------------',prompt:'$ '
           },
-     
+          
+
           );
     </script>
   </body>
